@@ -43,8 +43,18 @@ def new_notes(users)
         title: Faker::Superhero.descriptor,
         body: Faker::ChuckNorris.fact
       )
-      note.tags << Tag.find_or_create_by(name: Faker::StarWars.vehicle)
     end if user.notes.count < 2
+  end
+end
+
+def new_tags(notes)
+  print "\nchecking for tags: "
+  notes.each do |note|
+    rand(1..3).times do
+      print '.'
+      tag = Tag.find_or_create_by(name: Faker::StarWars.vehicle)
+      note.tags << tag
+    end if note.tags.count < 2
   end
 end
 
@@ -55,5 +65,6 @@ print "starting..."
 # this runs new_users if there are less than 10 users in the database.
 userslist = User.all.length < 5 ? new_users : User.all
 new_notes(userslist)
+new_tags(Note.all)
 
 puts "\nDone."
