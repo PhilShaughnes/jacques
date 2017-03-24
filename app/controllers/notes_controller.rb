@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-  before_action require_user only: [:update]
+  before_action :require_user, only: [:update]
 
   def index
     @notes = case
