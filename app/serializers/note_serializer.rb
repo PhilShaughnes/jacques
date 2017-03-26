@@ -1,5 +1,5 @@
 class NoteSerializer < ActiveModel::Serializer
-  attributes :title, :body, :created_at, :updated_at, :tags, :user
+  attributes :title, :body, :created_at, :updated_at, :tags, :user, :id
 
   def user
     # object.user ? object.user.slice(:username) : {username: "anonymous"}
