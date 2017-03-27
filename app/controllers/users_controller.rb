@@ -14,7 +14,8 @@ class UsersController < ApplicationController
     p params
     puts "**************************************************"
 
-    if @user && authenticate(params[:password])
+    puts @user
+    if @user && @user.authenticate(params[:password])
       render json: @user
     else
       request_error(["Invalid username or password"], 401)
