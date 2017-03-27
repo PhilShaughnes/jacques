@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user && authenticate(params[:password])
       render json: @user
     else
-      request_error("Invalid username or password", 401)
+      request_error(["Invalid username or password"], 401)
     end
   end
 
