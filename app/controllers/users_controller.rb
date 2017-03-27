@@ -10,6 +10,9 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by(username: params[:username])
+    puts "*************************************************"
+    p params
+    puts "**************************************************"
 
     if @user && authenticate(params[:password])
       render json: @user
